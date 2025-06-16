@@ -345,7 +345,7 @@ void correrUber(string nombreArchivo) {
     cout << "---------------------------\n" << endl;
 
     // Procesar las solicitudes de viaje
-    cout << "Ingrese viaje: " << endl;
+    cout << "Ingrese viaje: ";
     int origenViaje, destinoViaje;
     while (cin >> origenViaje >> destinoViaje) {
         if (origenViaje == -1 && destinoViaje == -1) break; // Terminar el programa
@@ -440,7 +440,7 @@ void correrUber(string nombreArchivo) {
 
         // Limpiar el buffer de entrada para el siguiente input
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        cout << "Ingrese viaje: " << endl;
+        cout << "Ingrese viaje: ";
     }
 
     // Liberar toda la memoria dinámica antes de terminar el programa
