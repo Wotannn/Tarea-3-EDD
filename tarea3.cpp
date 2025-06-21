@@ -456,7 +456,7 @@ void solicitar_uber(string nombreArchivo) {
 // Main de la aplicación Uber
 int main() {
     // Para modificar el archivo desde donde se carga el mapa
-    string nombreArchivo = "data1.txt";
+    string nombreArchivo = "data2.txt";
 
     solicitar_uber(nombreArchivo);
 
