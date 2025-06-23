@@ -327,7 +327,7 @@ void liberarMemoria(tGrafo*& grafo, Conductor**& conductores, int& nConductores)
 //************************************
 
 // Función para utilizar Uber
-void correrUber(string nombreArchivo) {
+void solicitar_uber(string nombreArchivo) {
     tGrafo* ciudad = nullptr;
     Conductor** conductores = nullptr;
     int nConductores = 0;
@@ -365,7 +365,7 @@ void correrUber(string nombreArchivo) {
         for (int i = 0; i < nConductores; i++) {
             int* caminoTemp = nullptr;
             int largoTemp = 0;
-            int distanciaActualConductor = ciudad->BFS(conductores[i]->getPosicion(), origenViaje, caminoTemp, largoTemp);
+            int distanciaConductorActual = ciudad->BFS(conductores[i]->getPosicion(), origenViaje, caminoTemp, largoTemp);
             
             // Liberar memoria del camino de BFS si se asignó
             if (caminoTemp != nullptr) {
@@ -374,12 +374,12 @@ void correrUber(string nombreArchivo) {
             }
 
             // Si hay una ruta desde este conductor
-            if (distanciaActualConductor != -1) {
-                if (distanciaMinConductor == -1 || distanciaActualConductor < distanciaMinConductor) {
-                    distanciaMinConductor = distanciaActualConductor;
+            if (distanciaConductorActual != -1) {
+                if (distanciaMinConductor == -1 || distanciaConductorActual < distanciaMinConductor) {
+                    distanciaMinConductor = distanciaConductorActual;
                     conductorSeleccionadoID = i;
                 }
-                else if (distanciaActualConductor == distanciaMinConductor) {
+                else if (distanciaConductorActual == distanciaMinConductor) {
                     // Criterio de desempate, el conductor ubicado en el nodo de índice menor 
                     if (conductores[i]->getPosicion() < conductores[conductorSeleccionadoID]->getPosicion()) {
                         conductorSeleccionadoID = i;
@@ -458,7 +458,7 @@ int main() {
     // Para modificar el archivo desde donde se carga el mapa
     string nombreArchivo = "data2.txt";
 
-    correrUber(nombreArchivo);
+    solicitar_uber(nombreArchivo);
 
     return 0;
 }
