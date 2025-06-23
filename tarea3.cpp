@@ -67,32 +67,6 @@ public:
     }
 
     int BFS(int inicioID, int destinoID, int*& path, int& pathLength);
-
-    // (Temporal) Para ver que todo se carga de forma correcta
-    void imprimirGrafo() const {
-        cout << "\n--- Estructura del Grafo ---" << endl;
-        cout << "Número total de nodos: " << cantidadNodos << endl;
-
-        for (int i = 1; i <= cantidadNodos; ++i) { // Los nodos van de 1 a numNodos
-            cout << "Nodo " << i << ": ";
-            AristaAdyacencia* actual = adyacencias[i];
-            if (actual == nullptr) {
-                cout << "No tiene aristas salientes.";
-            } else {
-                cout << "Adyacentes [";
-                while (actual != nullptr) {
-                    cout << actual->destinoID;
-                    actual = actual->siguiente;
-                    if (actual != nullptr) {
-                        cout << ", ";
-                    }
-                }
-                cout << "]";
-            }
-            cout << endl;
-        }
-        cout << "---------------------------\n" << endl;
-    }
 };
 
 //**********************************
@@ -334,15 +308,6 @@ void solicitar_uber(string nombreArchivo) {
     if (!leerArchivo(nombreArchivo, ciudad, conductores, nConductores)) {
         return;
     }
-
-    // (Temporal) Para ver que todo se carga de forma correcta
-    ciudad->imprimirGrafo(); 
-    cout << "--- Conductores Cargados ---" << endl;
-    cout << "Número de Conductores = " << nConductores << endl;
-    for (int i = 0; i < nConductores; i++) {
-        cout << "Conductor " << conductores[i]->getConductorID() << " en nodo: " << conductores[i]->getPosicion() << endl;
-    }
-    cout << "---------------------------\n" << endl;
 
     // Procesar las solicitudes de viaje
     cout << "Ingrese viaje: ";
